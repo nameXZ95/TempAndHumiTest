@@ -1,0 +1,5 @@
+{
+    "ConnectionStrings": {
+        "DefaultConnection": "Server=localhost;Database=temperature_humidity;Integrated Security=True;TrustServerCertificate=True;"
+    }
+}

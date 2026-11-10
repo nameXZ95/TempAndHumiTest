@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="TempAndHumiTest.Models.GaugeControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TempAndHumiTest.Models"
+             mc:Ignorable="d" 
+             d:DesignWidth="300" d:DesignHeight="300"
+             MinWidth="200" MinHeight="200">
+    <Grid Background="Transparent">
+        <!-- 底层画布，用于动态绘制圆弧和刻度 -->
+        <Canvas x:Name="MainCanvas" SizeChanged="MainCanvas_SizeChanged" />
+
+        <!-- 中间显示的数值、单位和标题 -->
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="{Binding Value, RelativeSource={RelativeSource AncestorType=UserControl}, StringFormat={}{0:00.0}}" 
+                           FontSize="36" FontWeight="Bold" 
+                           Foreground="{Binding ProgressBrush, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+                <TextBlock Text="{Binding Unit, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                           FontSize="18" FontWeight="Bold" Margin="4,8,0,0"
+                           Foreground="{Binding ProgressBrush, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+            </StackPanel>
+            <TextBlock Text="{Binding Title, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                       FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"
+                       Foreground="{Binding ProgressBrush, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,192 @@
+<Window x:Class="TempAndHumiTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Language="zh-CN"
+        Title="温湿度监控系统"
+        Height="650" Width="1200"
+        Background="{Binding BackgroundBrush}"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="Microsoft YaHei"
+        FontSize="12"
+        FontWeight="ExtraLight"
+        ResizeMode="NoResize">
+    <WindowChrome.WindowChrome>
+        <!--无边框-->
+        <WindowChrome CaptionHeight="50" CornerRadius="5" GlassFrameThickness="1" />
+    </WindowChrome.WindowChrome>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--  引入字典资源，RadioButton 的定制样式  -->
+                <ResourceDictionary Source="/Assets/Styles/AppStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+          
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="55" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- 第一行：图标 + 标题 + 导航 + 功能按钮 -->
+        <Image
+            Width="40"
+            Height="40"
+            Margin="10,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Source="/Assets/Images/监控.png" />
+        <TextBlock
+            Margin="65,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontSize="22"
+            FontWeight="Black"
+            Foreground="White"
+            FontFamily="{StaticResource AllFont}"
+            Text="温湿度监控系统" />
+
+        <StackPanel
+            HorizontalAlignment="Center"
+            Orientation="Horizontal">
+            <RadioButton
+                Command="{Binding NavigateCommand}"
+                CommandParameter="MonitorView1"
+                Cursor="Hand"
+                IsChecked="True"
+                Style="{StaticResource RaBtnStyle}">
+                <RadioButton.Content>
+                    <StackPanel>
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            FontFamily="{StaticResource RF}"
+                            FontSize="22"
+                            Text="&#xe61d;" />
+                        <TextBlock Text="监控" />
+                    </StackPanel>
+                </RadioButton.Content>
+            </RadioButton>
+            <RadioButton
+                Command="{Binding NavigateCommand}"
+                CommandParameter="LogView"
+                Cursor="Hand"
+                Visibility="{Binding AdminVisibility}"
+                Style="{StaticResource RaBtnStyle}">
+                <RadioButton.Content>
+                    <StackPanel>
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            FontFamily="{StaticResource RF}"
+                            FontSize="22"
+                            Text="&#xe619;" />
+                        <TextBlock Text="日志" />
+                    </StackPanel>
+                </RadioButton.Content>
+            </RadioButton>
+            <!--<RadioButton
+                Command="{Binding NavigateCommand}"
+                CommandParameter="DataView"
+                Cursor="Hand"
+                Style="{StaticResource RaBtnStyle}">
+                <RadioButton.Content>
+                    <StackPanel>
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            FontFamily="{StaticResource RF}"
+                            FontSize="22"
+                            Text="&#xe61c;" />
+                        <TextBlock Text="数据" />
+                    </StackPanel>
+                </RadioButton.Content>
+            </RadioButton>-->
+            <RadioButton
+                Command="{Binding NavigateCommand}"
+                CommandParameter="UserManageView"
+                Cursor="Hand"
+                
+                Style="{StaticResource RaBtnStyle}">
+                <RadioButton.Content>
+                    <StackPanel>
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            FontFamily="{StaticResource RF}"
+                            FontSize="22"
+                            Text="&#xe614;" />
+                        <TextBlock Text="管理" />
+                    </StackPanel>
+                </RadioButton.Content>
+            </RadioButton>
+        </StackPanel>
+
+        <StackPanel
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+            <Button Margin="10,0" Style="{StaticResource BtnStyle}" Command="{Binding OpenSettings}">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock
+                        Margin="0,5"
+                        HorizontalAlignment="Center"
+                        FontFamily="{StaticResource RF}"
+                        FontSize="22"
+                        Text="&#xe618;" />
+                    <TextBlock Text="设置" />
+                </StackPanel>
+            </Button>
+            <Button Command="{Binding ExitCommand}" Style="{StaticResource BtnStyle}">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock
+                        Margin="0,5"
+                        HorizontalAlignment="Center"
+                        FontFamily="{StaticResource RF}"
+                        FontSize="22"
+                        Text="&#xe61a;" />
+                    <TextBlock Text="退出" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <!--第二行：欢迎信息 + 时钟-->
+        <StackPanel
+            Grid.Row="1"
+            Margin="20,0"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <TextBlock
+                FontFamily="{StaticResource AllFont}"
+                FontSize="14"
+                Foreground="#5FFF"
+                Text="欢迎登陆: " />
+            <TextBlock
+                FontFamily="{StaticResource AllFont}"
+                FontSize="14"
+                Foreground="#87E8EC"
+                Text="Admin" />
+        </StackPanel>
+
+        <StackPanel
+            Grid.Row="1"
+            Margin="10,0,20,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <TextBlock
+                FontFamily="{StaticResource AllFont}"
+                FontSize="14"
+                Foreground="#5FFF"
+                Text="今天时间： " />
+            <TextBlock
+                FontFamily="{StaticResource AllFont}"
+                FontSize="14"
+                Foreground="#87E8EC"
+                Text="{Binding CurrentTime, StringFormat={}{0:yyyy年MM月dd日 dddd}}" />
+        </StackPanel>
+
+        <!--第三行：当前页面。DataTemplate 在 App.xaml 里按 ViewModel 类型自动选择-->
+        <ContentControl Grid.Row="2" Content="{Binding CurrentViewModel}" />
+    </Grid>
+</Window>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37710.0 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TempAndHumiTest", "TempAndHumiTest\TempAndHumiTest.csproj", "{E32D31A0-C8CC-4910-823E-CA5160B3F232}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E32D31A0-C8CC-4910-823E-CA5160B3F232}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E32D31A0-C8CC-4910-823E-CA5160B3F232}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E32D31A0-C8CC-4910-823E-CA5160B3F232}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E32D31A0-C8CC-4910-823E-CA5160B3F232}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C8C13202-5E03-4EBD-8904-C34AE73FE69A}
+	EndGlobalSection
+EndGlobal

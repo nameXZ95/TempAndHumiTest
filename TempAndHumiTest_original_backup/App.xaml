@@ -1,0 +1,24 @@
+﻿<Application x:Class="TempAndHumiTest.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:TempAndHumiTest"
+             xmlns:vm="clr-namespace:TempAndHumiTest.ViewModels"
+             xmlns:view="clr-namespace:TempAndHumiTest.Views"
+            Startup="App_Startup">
+    <Application.Resources>
+        <DataTemplate DataType="{x:Type vm:MonitorViewModel}">
+            <view:MonitorView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:LogViewModel}">
+            <view:LogView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:DataViewModel}">
+            <view:DataView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:UserManageViewModel}">
+            <view:UserManageView/>
+        </DataTemplate>
+        <FontFamily x:Key="AllFont">./Asset/Fonts/#阿里妈妈东方大楷</FontFamily>
+        <FontFamily x:Key="RF">./Assets/Fonts/#iconfont</FontFamily>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,460 @@
+<ResourceDictionary
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+>
+
+    <Style x:Key="RaBtnStyle" TargetType="RadioButton">
+        <Setter Property="Height" Value="50" />
+        <Setter Property="Width" Value="50" />
+        <Setter Property="Margin" Value="30,0" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="#9FFF" />
+        <Setter Property="BorderBrush" Value="#46556C" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Border
+            x:Name="ButtonBorder"
+            Background="{TemplateBinding Background}"
+            CornerRadius="8"
+            BorderThickness="1"
+          >
+                        <ContentPresenter
+              x:Name="Ctr"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Center"
+            />
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <!-- 鼠标悬停 -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="#2222" />
+                            <Setter Property="Cursor" Value="Hand" />
+                        </Trigger>
+
+                        <!-- 按下 -->
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="#C7D8FF" />
+                        </Trigger>
+                        <!--选中-->
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="White" />
+                            <Setter Property="Foreground" Value="Black" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Button" x:Key="BtnStyle">
+        <Setter Property="Width" Value="50" />
+        <Setter Property="Margin" Value="5,0" />
+        <Setter Property="Background" Value="#1000" />
+        <Setter Property="Foreground" Value="#9FFF" />
+        <!--优先级提升，如果没有这个配置的话点击这两个按钮可能无效-->
+        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                        <Border Background="transparent" Name="bor" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="bor" Property="Background" Value="#2222" />
+                            <Setter Property="Cursor" Value="Hand" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TopBtnStyle" TargetType="Button">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="#20B9D0" />
+        <Setter Property="BorderBrush" Value="#20B9D0" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="12,4" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Margin" Value="10,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="Bor" Background="{TemplateBinding Background}" CornerRadius="5" Height="35"
+                         BorderBrush="{TemplateBinding BorderBrush}"
+                         BorderThickness="{TemplateBinding BorderThickness}">
+
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Cursor" Value="Hand" />
+                            <Setter TargetName="Bor" Property="Background" Value="#39567D" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="LoginInputStyle" TargetType="TextBox">
+        <Setter Property="Background" Value="#0B2533"/>
+        <Setter Property="Foreground" Value="#E8F8FF"/>
+        <Setter Property="BorderBrush" Value="#165C72"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="8,4"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border x:Name="bd"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="3">
+                        <ScrollViewer x:Name="PART_ContentHost"
+                                  Margin="0"
+                                  VerticalAlignment="Center"/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="bd" Property="BorderBrush" Value="#20B9D0"/>
+                        </Trigger>
+
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="bd" Property="BorderBrush" Value="#00F2D0"/>
+                            <Setter TargetName="bd" Property="Background" Value="#0F3042"/>
+
+                            <Setter TargetName="bd" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="#00F2D0"
+                                                 BlurRadius="6"
+                                                 ShadowDepth="0"
+                                                 Opacity="0.4"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="LoginPasswordBoxStyle" TargetType="PasswordBox">
+        <Setter Property="Background" Value="#0B2533"/>
+        <Setter Property="Foreground" Value="#E8F8FF"/>
+        <Setter Property="BorderBrush" Value="#165C72"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="8,4"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="PasswordBox">
+                    <Border x:Name="bd"
+                        Background="#0B2533"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="3">
+                        <PasswordBox x:Name="PART_PasswordBox"
+                                 Margin="0"
+                                 VerticalAlignment="Center"/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="bd" Property="BorderBrush" Value="#20B9D0"/>
+                        </Trigger>
+
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="bd" Property="BorderBrush" Value="#00F2D0"/>
+                            <Setter TargetName="bd" Property="Background" Value="#0F3042"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="LoginPrimaryButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="#00D8B6"/>
+        <Setter Property="Foreground" Value="#FFFFFF"/>
+        <Setter Property="BorderBrush" Value="#00F2D0"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="20,6"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="bd"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="4">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#00F2D0"
+                                         BlurRadius="8"
+                                         ShadowDepth="0"
+                                         Opacity="0.6"/>
+                        </Border.Effect>
+
+                        <ContentPresenter HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="bd" Property="Background" Value="#00F2D0"/>
+                            <Setter TargetName="bd" Property="BorderBrush" Value="#5FF7E0"/>
+                            <Setter TargetName="bd" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="#5FF7E0"
+                                                 BlurRadius="12"
+                                                 ShadowDepth="0"
+                                                 Opacity="0.8"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="bd" Property="Background" Value="#00A894"/>
+                            <Setter TargetName="bd" Property="BorderBrush" Value="#00D8B6"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TechTextBox" TargetType="TextBox">
+        <Setter Property="Foreground" Value="#E0E8F0"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Padding" Value="10,8"/>
+        <Setter Property="Background" Value="#1A0C2342"/>
+        <!-- 半透明深蓝底 -->
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="#4A00A8FF"/>
+        <!-- 默认暗蓝边框 -->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Grid>
+                        <!-- 外层发光边框 (使用 DropShadow 模拟霓虹发光) -->
+                        <Border x:Name="border" 
+                            Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            CornerRadius="4">
+                            <Border.Effect>
+                                <DropShadowEffect Color="#00FFCC" BlurRadius="8" ShadowDepth="0" Opacity="0.4"/>
+                            </Border.Effect>
+                        </Border>
+
+                        <!-- 内容区域 -->
+                        <ScrollViewer x:Name="PART_ContentHost" Margin="{TemplateBinding Padding}" VerticalAlignment="Center" />
+
+                        <!-- 水印 (Placeholder) -->
+                        <TextBlock x:Name="Watermark" 
+                               Text="{TemplateBinding Tag}" 
+                               Foreground="#668899" 
+                               Margin="{TemplateBinding Padding}" 
+                               VerticalAlignment="Center" 
+                               IsHitTestVisible="False" 
+                               Visibility="Collapsed"/>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <!-- 当文本为空时显示水印 -->
+                        <Trigger Property="Text" Value="">
+                            <Setter TargetName="Watermark" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                        <!-- 获取焦点时，边框变亮，发光增强 -->
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="#00FFCC"/>
+                            <Setter TargetName="border" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="#00FFCC" BlurRadius="15" ShadowDepth="0" Opacity="0.8"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="#00CCAA"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TechPasswordBox" TargetType="PasswordBox">
+        <Setter Property="Foreground" Value="#E0E8F0"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Padding" Value="10,8"/>
+        <Setter Property="Background" Value="#1A0C2342"/>
+        <!-- 半透明深蓝底 -->
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="#4A00A8FF"/>
+        <!-- 默认暗蓝边框 -->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="PasswordBox">
+                    <Grid>
+                        <!-- 外层发光边框 (使用 DropShadow 模拟霓虹发光) -->
+                        <Border x:Name="border" 
+                        Background="{TemplateBinding Background}" 
+                        BorderBrush="{TemplateBinding BorderBrush}" 
+                        BorderThickness="{TemplateBinding BorderThickness}" 
+                        CornerRadius="4">
+                            <Border.Effect>
+                                <DropShadowEffect Color="#00FFCC" BlurRadius="8" ShadowDepth="0" Opacity="0.4"/>
+                            </Border.Effect>
+                        </Border>
+
+                        <!-- 内容区域 -->
+                        <ScrollViewer x:Name="PART_ContentHost" Margin="{TemplateBinding Padding}" VerticalAlignment="Center" />
+
+                        <!-- 水印 (Placeholder) -->
+                        <TextBlock x:Name="Watermark" 
+                           Text="{TemplateBinding Tag}" 
+                           Foreground="#668899" 
+                           Margin="{TemplateBinding Padding}" 
+                           VerticalAlignment="Center" 
+                           IsHitTestVisible="False" 
+                           Visibility="Collapsed"/>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <!-- 当文本为空时显示水印 -->
+                        <Trigger Property="PasswordChar" Value="">
+                            <Setter TargetName="Watermark" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                        <!-- 获取焦点时，边框变亮，发光增强 -->
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="#00FFCC"/>
+                            <Setter TargetName="border" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="#00FFCC" BlurRadius="15" ShadowDepth="0" Opacity="0.8"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="#00CCAA"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TechButton" TargetType="Button">
+        <Setter Property="Foreground" Value="#FFFFFF"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <!-- 外层大面积发光 (科技感的核心) -->
+                        <Border x:Name="glowBorder" 
+                            Background="#00CCFF" 
+                            CornerRadius="24" 
+                            Opacity="0">
+                            <Border.Effect>
+                                <BlurEffect Radius="20"/>
+                            </Border.Effect>
+                        </Border>
+
+                        <!-- 按钮主体 -->
+                        <Border x:Name="mainBorder" 
+                            CornerRadius="24" 
+                            BorderThickness="1" 
+                            BorderBrush="#33FFFFFF">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="#00E5FF" Offset="0.0"/>
+                                    <GradientStop Color="#0077FF" Offset="1.0"/>
+                                </LinearGradientBrush>
+                                <!--<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="#B300CCFF" Offset="0.0"/>
+                                    <GradientStop Color="#990066CC" Offset="1.0"/>
+                                </LinearGradientBrush>-->
+                            </Border.Background>
+
+                            <!-- 高光内阴影 (让按钮看起来有玻璃质感) -->
+                            <!--<Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="#B300CCFF" Offset="0.0"/>
+                                    <GradientStop Color="#990066CC" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Border.Background>-->
+
+                            <!-- 按钮文字 -->
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,10"/>
+                        </Border>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <!-- 鼠标悬停：强发光 -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="glowBorder" Property="Opacity" Value="0.8"/>
+                        </Trigger>
+                        <!-- 鼠标按下：发光减弱，主体变暗 -->
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="glowBorder" Property="Opacity" Value="1"/>
+                            <Setter TargetName="mainBorder" Property="Opacity" Value="0.8"/>
+                            <!-- 稍微缩小一点模拟按压感 -->
+                            <Setter TargetName="mainBorder" Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="0.98" ScaleY="0.98" CenterX="100" CenterY="20"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TechCheckBox" TargetType="CheckBox">
+        <Setter Property="Foreground" Value="#B0C4DE"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <StackPanel Orientation="Horizontal" Background="Transparent">
+                        <!-- 自定义方框 -->
+                        <Border x:Name="box" Width="14" Height="14" Background="#33000000" BorderBrush="#4A00A8FF" BorderThickness="1" CornerRadius="2" Margin="0,0,8,0">
+                            <!-- 内部打勾的图形（默认隐藏） -->
+                            <Path x:Name="checkMark" Data="M 2,6 L 5,10 L 11,2" Stroke="#00FFCC" StrokeThickness="2" Visibility="Collapsed"/>
+                        </Border>
+                        <ContentPresenter VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="checkMark" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="box" Property="BorderBrush" Value="#00FFCC"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
