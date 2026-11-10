@@ -59,7 +59,7 @@ namespace TempAndHumiTest.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async Task LoginClick(object sender, RoutedEventArgs e)
+        private void LoginClick(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(this.PwdBox.Password) || string.IsNullOrEmpty(this.UserBox.Text))
             {
@@ -70,7 +70,7 @@ namespace TempAndHumiTest.Views
             // 因为是直接绑定的LoginViewModel，所以可以直接调用里面的方法，注意要把里面的方法改成public的
             if (DataContext is LoginViewModel login)
             {
-              await login.LoginByUsername(UserBox.Text, this.PwdBox.Password);
+              login.LoginByUsername(UserBox.Text, this.PwdBox.Password);
             }
             
         }
@@ -80,7 +80,7 @@ namespace TempAndHumiTest.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async Task EnterKeyDownEvent(object sender, KeyEventArgs e)
+        private void EnterKeyDownEvent(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
@@ -91,7 +91,7 @@ namespace TempAndHumiTest.Views
                 }
                 if (DataContext is LoginViewModel login)
                 {
-                    await login.LoginByUsername(UserBox.Text, this.PwdBox.Password);
+                    login.LoginByUsername(UserBox.Text, this.PwdBox.Password);
                 }
             }
         }

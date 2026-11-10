@@ -40,7 +40,7 @@ namespace TempAndHumiTest.ViewModels
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>
-        public async Task LoginByUsername(string username, string password)
+        public async void LoginByUsername(string username, string password)
         {
             cts = new CancellationTokenSource();
             var token = cts.Token;
